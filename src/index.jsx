@@ -1,11 +1,16 @@
 // @flow
 
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 import App from './App';
 
 const renderApp = () => {
-  ReactDOM.render(<App />, document.getElementById('root'));
+  const ROOT_ELEMENT = '#root';
+  const rootEl = document.querySelector(ROOT_ELEMENT);
+  if (!(rootEl instanceof Element)) {
+    throw new Error('invalid type');
+  }
+  render(<App />, rootEl);
 };
 renderApp();
 

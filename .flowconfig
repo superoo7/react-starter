@@ -1,4 +1,10 @@
 [ignore]
+<PROJECT_ROOT>/dist/*
+<PROJECT_ROOT>/public/*
+<PROJECT_ROOT>/node_modules/webpack/.*
+<PROJECT_ROOT>/node_modules/webpack-dev-server/.*
+<PROJECT_ROOT>/node_modules/redux/examples/.*
+<PROJECT_ROOT>/node_modules/redux/lib/.*
 
 [include]
 
@@ -7,5 +13,7 @@
 [lints]
 
 [options]
+module.system=node
+module.name_mapper='\(redux\)' -> '\1/src/index'
 
 [strict]

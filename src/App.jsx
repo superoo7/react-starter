@@ -16,6 +16,7 @@ import Footer from './shared/Footer';
 import Home from './components/Home';
 import Contact from './components/Contact';
 import Dealer from './components/Dealer';
+import Sample from './components/Sample';
 import NotFound from './components/NotFound';
 
 const App = () => (
@@ -27,6 +28,7 @@ const App = () => (
           <Route exact path="/" component={Home} />
           <Route path="/contact" component={Contact} />
           <Route path="/dealer" component={Dealer} />
+          <Route path="/sample" component={Sample} />
           <Route component={NotFound} />
         </Switch>
         <Footer />
