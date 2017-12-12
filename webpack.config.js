@@ -10,7 +10,9 @@ module.exports = {
     'webpack/hot/only-dev-server',
     './src/index.jsx'
   ],
-  devtool: 'cheap-eval-source-map',
+  devtool:
+    process.env.NODE_ENV === 'development' ? 'cheap-eval-source-map' : false,
+
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js'
@@ -25,7 +27,7 @@ module.exports = {
   stats: {
     colors: true,
     reasons: true,
-    chunks: true
+    chunks: false
   },
 
   module: {

@@ -8,20 +8,18 @@
   "scripts": {
     "clean": "rimraf dist && copyfiles -f public/* dist",
     "dev:lint": "eslint **/*.{js,jsx} --quiet",
-    "dev:format": "prettier --write --single-quote --print-width=120 --parser=flow --tab-width=2 \"js/**/*.{js,jsx}\"",
+    "dev:format":
+      "prettier --write --single-quote --print-width=120 --parser=flow --tab-width=2 \"js/**/*.{js,jsx}\"",
     "dev:watch": "webpack-dev-server --port 7000",
-    "build": "yarn clean && webpack",
     "test": "cross-env NODE_ENV=test yarn run jest",
     "test:update": "cross-env NODE_ENV=test yarn run jest -u",
-    "test:coverage": "cross-env NODE_ENV=test yarn run jest --coverage"
+    "test:coverage": "cross-env NODE_ENV=test yarn run jest --coverage",
+    "production":
+      "cross-env NODE_ENV=production yarn run clean && webpack --config=webpack.prod.js"
   },
   "jest": {
-    "snapshotSerializers": [
-      "jest-serializer-enzyme"
-    ],
-    "setupFiles": [
-      "raf/polyfill"
-    ]
+    "snapshotSerializers": ["jest-serializer-enzyme"],
+    "setupFiles": ["raf/polyfill"]
   },
   "dependencies": {
     "html-webpack-plugin": "^2.30.1",
