@@ -10,7 +10,18 @@
     "dev:lint": "eslint **/*.{js,jsx} --quiet",
     "dev:format": "prettier --write --single-quote --print-width=120 --parser=flow --tab-width=2 \"js/**/*.{js,jsx}\"",
     "dev:watch": "webpack-dev-server --port 7000",
-    "build": "yarn clean && webpack"
+    "build": "yarn clean && webpack",
+    "test": "cross-env NODE_ENV=test yarn run jest",
+    "test:update": "cross-env NODE_ENV=test yarn run jest -u",
+    "test:coverage": "cross-env NODE_ENV=test yarn run jest --coverage"
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "jest-serializer-enzyme"
+    ],
+    "setupFiles": [
+      "raf/polyfill"
+    ]
   },
   "dependencies": {
     "html-webpack-plugin": "^2.30.1",
@@ -51,5 +62,13 @@
     "webpack-dev-middleware": "^1.12.2",
     "webpack-dev-server": "^2.9.7",
     "webpack-hot-middleware": "^2.21.0"
+  },
+  "optionalDependencies": {
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.0",
+    "enzyme-to-json": "^3.2.2",
+    "jest": "^21.2.1",
+    "jest-serializer-enzyme": "^1.0.0",
+    "react-test-renderer": "^16.2.0"
   }
 }
