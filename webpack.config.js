@@ -1,6 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const workboxPlugin = require('workbox-webpack-plugin');
+
+const dist = 'dist';
 
 module.exports = {
   context: __dirname,
@@ -49,6 +52,13 @@ module.exports = {
       template: 'src/index.html'
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin()
+    new webpack.NamedModulesPlugin(),
+    new workboxPlugin({
+      globDirectory: dist,
+      globPatterns: ['**/*.{html,js}'],
+      swDest: path.join(dist, 'sw.js'),
+      clientsClaim: true,
+      skipWaiting: true
+    })
   ]
 };
